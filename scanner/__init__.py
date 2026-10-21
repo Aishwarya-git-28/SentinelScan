@@ -1,0 +1,1 @@
+"""SentinelScan scanner package."""

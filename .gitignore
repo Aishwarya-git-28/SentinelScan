@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# Secrets and local config
+*.env
+!.env.example
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+*.egg
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Streamlit local config
+.streamlit/secrets.toml
+
+# Generated reports (don't commit scan outputs)
+*.pdf
+*.csv
+sentinelscan_*.json
+
+# Temporary files
+*.tmp
+*.bak
+*.zip
+
+# Assets compiled/generated
+assets/generated/

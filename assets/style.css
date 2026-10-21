@@ -1,0 +1,657 @@
+/* ==========================================================================
+   SentinelScan — Production Cyber Dashboard Stylesheet
+   Design System: Deep Navy, Restrained Blue Accents, Crisp Borders, Aligned Layouts
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-main: #0B1120;
+  --bg-sidebar: #0F172A;
+  --bg-card: #111C32;
+  --bg-card-elevated: #16233B;
+  --bg-card-hover: #182742;
+  
+  --border-subtle: #263650;
+  --border-focus: #3B82F6;
+  --border-light: #334155;
+
+  --accent-primary: #3B82F6;
+  --accent-hover: #2563EB;
+  --accent-subtle: rgba(59, 130, 246, 0.12);
+
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Semantic Status Colors */
+  --color-critical: #EF4444;
+  --color-critical-bg: rgba(239, 68, 68, 0.15);
+  --color-critical-border: rgba(239, 68, 68, 0.35);
+
+  --color-high: #F97316;
+  --color-high-bg: rgba(249, 115, 22, 0.15);
+  --color-high-border: rgba(249, 115, 22, 0.35);
+
+  --color-medium: #F59E0B;
+  --color-medium-bg: rgba(245, 158, 11, 0.15);
+  --color-medium-border: rgba(245, 158, 11, 0.35);
+
+  --color-low: #38BDF8;
+  --color-low-bg: rgba(56, 189, 248, 0.15);
+  --color-low-border: rgba(56, 189, 248, 0.35);
+
+  --color-info: #94A3B8;
+  --color-info-bg: rgba(148, 163, 184, 0.15);
+  --color-info-border: rgba(148, 163, 184, 0.35);
+
+  --color-success: #22C55E;
+  --color-success-bg: rgba(34, 197, 94, 0.15);
+  --color-success-border: rgba(34, 197, 94, 0.35);
+
+  /* Spacing Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Streamlit Base Layout Overrides
+   -------------------------------------------------------------------------- */
+
+.stApp {
+  background-color: var(--bg-main) !important;
+  color: var(--text-primary) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Top toolbar & header styling */
+header[data-testid="stHeader"] {
+  background-color: var(--bg-main) !important;
+  border-bottom: 1px solid transparent !important;
+  height: 2.75rem !important;
+}
+
+/* Main block container padding reduction (removes 6rem default gap) */
+.main .block-container {
+  padding-top: 1.5rem !important;
+  padding-bottom: 3.5rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  max-width: 1240px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Typography */
+h1 {
+  font-size: 1.85rem !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.25rem !important;
+  width: 100% !important;
+}
+
+h2, h3, h4 {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.stCaption, [data-testid="stCaptionContainer"] {
+  font-size: 0.92rem !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.5 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar Shell & Navigation
+   -------------------------------------------------------------------------- */
+
+[data-testid="stSidebar"] {
+  background-color: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border-subtle) !important;
+  min-width: 250px !important;
+  max-width: 260px !important;
+}
+
+[data-testid="stSidebar"] .block-container {
+  padding-top: 1.5rem !important;
+  padding-bottom: 2rem !important;
+  padding-left: 1.1rem !important;
+  padding-right: 1.1rem !important;
+}
+
+/* Sidebar Brand Header */
+.sidebar-brand-box {
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-brand-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.sidebar-brand-tagline {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: var(--space-xs);
+}
+
+.sidebar-version-pill {
+  display: inline-block;
+  padding: 1px 7px;
+  background-color: var(--bg-card-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: var(--accent-primary);
+}
+
+/* Sidebar Navigation Buttons - Uniform, aligned */
+[data-testid="stSidebar"] .stButton > button {
+  width: 100% !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  padding: 0 14px !important;
+  background-color: transparent !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--radius-md) !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 3px !important;
+  transition: all 0.15s ease !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+  background-color: var(--bg-card-elevated) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+/* Sidebar advisory footer card */
+.sidebar-advisory-card {
+  background-color: rgba(17, 28, 50, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  margin-top: var(--space-lg);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Native Streamlit Bordered Container Styling
+   -------------------------------------------------------------------------- */
+
+[data-testid="stVerticalBlockBorderWrapper"] {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-lg) !important;
+  margin-bottom: var(--space-lg) !important;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] > div {
+  padding: 18px 22px !important;
+}
+
+/* --------------------------------------------------------------------------
+   Badges & Pills
+   -------------------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: var(--radius-sm);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-critical {
+  background-color: var(--color-critical-bg);
+  color: var(--color-critical);
+  border: 1px solid var(--color-critical-border);
+}
+
+.badge-high {
+  background-color: var(--color-high-bg);
+  color: var(--color-high);
+  border: 1px solid var(--color-high-border);
+}
+
+.badge-medium {
+  background-color: var(--color-medium-bg);
+  color: var(--color-medium);
+  border: 1px solid var(--color-medium-border);
+}
+
+.badge-low {
+  background-color: var(--color-low-bg);
+  color: var(--color-low);
+  border: 1px solid var(--color-low-border);
+}
+
+.badge-info {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+  border: 1px solid var(--color-info-border);
+}
+
+.badge-passed {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+}
+
+.badge-demo {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #FCD34D;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+}
+
+.badge-live {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #93C5FD;
+  border: 1px solid rgba(59, 130, 246, 0.45);
+}
+
+.badge-grade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: var(--radius-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Scan Summary Metadata Strip
+   -------------------------------------------------------------------------- */
+
+.scan-summary-strip {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: var(--space-xl);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.summary-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 110px;
+}
+
+.summary-meta-label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.summary-meta-value {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.summary-meta-url {
+  font-family: monospace;
+  font-size: 0.88rem;
+  color: var(--accent-primary);
+  max-width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------------------------------
+   Score & Posture Display
+   -------------------------------------------------------------------------- */
+
+.score-display-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px;
+}
+
+.score-number-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin: 6px 0;
+}
+
+.score-number-big {
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.score-denominator {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.score-bar-track {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(38, 54, 80, 0.5);
+  border-radius: 3px;
+  margin: 12px 0 8px 0;
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.score-status-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Findings Breakdown List
+   -------------------------------------------------------------------------- */
+
+.stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 0.88rem;
+  border-bottom: 1px solid rgba(38, 54, 80, 0.3);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-row-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.stat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.stat-row-count {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   Demo Banner
+   -------------------------------------------------------------------------- */
+
+.demo-banner-box {
+  background-color: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  margin-bottom: var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.demo-banner-text {
+  font-size: 0.86rem;
+  color: #FDE68A;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   Form Inputs & Buttons
+   -------------------------------------------------------------------------- */
+
+.stTextInput > div > div > input {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 10px 14px !important;
+  font-size: 0.92rem !important;
+}
+
+.stTextInput > div > div > input:focus {
+  border-color: var(--border-focus) !important;
+  box-shadow: 0 0 0 1px var(--border-focus) !important;
+}
+
+.stCheckbox > label {
+  color: var(--text-secondary) !important;
+  font-size: 0.88rem !important;
+}
+
+/* Primary buttons */
+.stButton > button[kind="primary"],
+.stButton > button[type="primary"] {
+  background-color: var(--accent-primary) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  padding: 10px 22px !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.01em !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.stButton > button[kind="primary"]:hover,
+.stButton > button[type="primary"]:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+/* Secondary / standard buttons */
+.stButton > button {
+  background-color: var(--bg-card-elevated) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 500 !important;
+  padding: 9px 18px !important;
+  font-size: 0.9rem !important;
+}
+
+.stButton > button:hover {
+  background-color: var(--bg-card-hover) !important;
+  border-color: var(--border-focus) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Download buttons */
+.stDownloadButton > button {
+  background-color: var(--bg-card-elevated) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 9px 16px !important;
+  font-weight: 500 !important;
+  font-size: 0.88rem !important;
+  width: 100% !important;
+}
+
+.stDownloadButton > button:hover {
+  background-color: var(--bg-card-hover) !important;
+  border-color: var(--border-focus) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Expanders & Findings Details
+   -------------------------------------------------------------------------- */
+
+[data-testid="stExpander"] {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  margin-bottom: 8px !important;
+  overflow: hidden !important;
+}
+
+[data-testid="stExpander"] details summary {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  padding: 12px 18px !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+}
+
+[data-testid="stExpander"] details summary:hover {
+  background-color: var(--bg-card-elevated) !important;
+}
+
+[data-testid="stExpander"] details[open] summary {
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+/* Callout blocks inside findings */
+.finding-box {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.finding-box-remediation {
+  background-color: rgba(59, 130, 246, 0.08);
+  border-left: 3px solid var(--accent-primary);
+  border-top: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Tabs
+   -------------------------------------------------------------------------- */
+
+[data-baseweb="tab-list"] {
+  background-color: var(--bg-sidebar) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+  padding: 4px 6px 0 6px !important;
+  gap: 4px !important;
+}
+
+[data-baseweb="tab"] {
+  background-color: transparent !important;
+  color: var(--text-secondary) !important;
+  border: none !important;
+  font-weight: 500 !important;
+  font-size: 0.88rem !important;
+  padding: 10px 20px !important;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
+}
+
+[data-baseweb="tab"]:hover {
+  color: var(--text-primary) !important;
+  background-color: rgba(22, 35, 59, 0.5) !important;
+}
+
+[data-baseweb="tab"][aria-selected="true"] {
+  background-color: var(--bg-card-elevated) !important;
+  color: var(--accent-primary) !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid var(--accent-primary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Tables & DataFrames
+   -------------------------------------------------------------------------- */
+
+.stDataFrame {
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  overflow: hidden !important;
+}
+
+/* Code & Pre Blocks */
+pre, code {
+  background-color: #070D18 !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-sm) !important;
+  color: #E2E8F0 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+/* Horizontal Dividers */
+hr {
+  border: none !important;
+  border-top: 1px solid var(--border-subtle) !important;
+  margin: var(--space-xl) 0 !important;
+}
